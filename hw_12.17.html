@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	 <style type="text/css">
+    .classb{
+        display: inline-block;
+        border-style: solid;
+        background-color: "gray;";
+        width: 300pt;
+        height: 200pt;
+        padding-left: 5pt;
+    }
+    .button {
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #CD853F  ;
+      border-color: #8B4513 ;
+    }
+    .theend{
+      font-weight: bolder;
+      font-size: 15pt;
+    }
+
+    .button:hover {background-color:#A52A2A }
+
+    #result{
+      margin-top:10px;
+      background: skyblue;
+      padding:10px;
+      border-radius:5px;
+    }
+
+     .myTable tr:nth-child(odd){background-color:#e8e8e8;}
+     </style>
+</head>
+<body>
+	<script>
+        var correctnumber = Math.floor((Math.random()*10+1));
+        var result;
+        var right = 100;
+        var left = 0;
+
+        function count(){
+             var text1  = parseInt( document.getElementById('text1').value);//獲取第一個輸入框的值
+             if (text1==correctnumber) {alert("答對了!");
+               location.reload();
+                }else if(text1>correctnumber) {
+                  right = text1;
+                  var tr = document.createElement("tr");
+                  var td = document.createElement("document");
+                  var text = document.createTextNode(left + "~" + right);
+                  td.appendChild(text);
+                  tr.appendChild(td);
+                  document.getElementById("table").appendChild(tr);
+                }else if (text1<correctnumber){
+                  left = text1;
+                  var tr = document.createElement("tr");
+                  var td = document.createElement("document");
+                  var text = document.createTextNode(left + "~" + right);
+                  td.appendChild(text);
+                  tr.appendChild(td);
+                  document.getElementById("table").appendChild(tr);
+                }
+             document.getElementById('fruit').textContent= result;
+             //設定結果輸入框的值 
+           }
+	</script>
+	 <center>
+    <div class="classb" style="background-color:#D3D3D3; text-align:left;">
+        <p class="theend" >Guessing Game</p>
+        <p>Your Guess(1 ~ 100)</p>
+        <input type='text' id='text1' style="width: 200pt;"> 
+      <p >
+        <button class="button" value="play" onclick="count()" style="width: 150pt;height: 30pt;">play
+        </button>
+      </p>
+      <div style="border-width: 3px;">Result </div> <table id="table" class="myTable"></table>
+    </div>
+ </center>
+
+</body>
+</html>
